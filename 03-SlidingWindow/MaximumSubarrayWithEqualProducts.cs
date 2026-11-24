@@ -11,7 +11,7 @@
                 lcm = Mathf.LeastCommonMultiple(lcm, number);
                 bool isProductEquivalent = product == lcm * gcd;
                 if (!isProductEquivalent) {
-                    continue;
+                    break;
                 }
                 int length = end - start + 1;
                 max = int.Max(length, max);
