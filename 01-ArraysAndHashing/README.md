@@ -1,6 +1,5 @@
 ﻿# TODO
 
-- easy: https://leetcode.com/problems/contains-duplicate/
 - easy: https://leetcode.com/problems/valid-anagram/
 - easy: https://leetcode.com/problems/two-sum/
 - medium: https://leetcode.com/problems/group-anagrams/
