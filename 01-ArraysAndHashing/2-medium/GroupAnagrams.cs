@@ -2,10 +2,10 @@
     public IList<IList<string>> GroupAnagrams(string[] strings) {
         Dictionary<char[], IList<string>> groups = new(ArrayComparer<char>.Instance);
         foreach (string letters in strings) {
-            char[] array = letters.ToCharArray();
-            Array.Sort(array);
-            if (!groups.TryGetValue(array, out var group)) {
-                groups[array] = group = [];
+            char[] key = letters.ToCharArray();
+            Array.Sort(key);
+            if (!groups.TryGetValue(key, out var group)) {
+                groups[key] = group = [];
             }
             group.Add(letters);
         }
