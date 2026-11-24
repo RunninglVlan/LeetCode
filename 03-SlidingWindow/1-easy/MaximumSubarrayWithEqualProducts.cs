@@ -1,4 +1,4 @@
-﻿// https://leetcode.com/problems/maximum-subarray-with-equal-products
+﻿// https://leetcode.com/problems/maximum-subarray-with-equal-products/
 // Note: Doesn't use sliding window yet
 
 public class Solution {
