@@ -4,7 +4,7 @@ public class Solution {
     public int MaxLength(int[] numbers) {
         List<int[]> subarrays = [];
         for (var start = 0; start < numbers.Length; start++) {
-            for (int end = numbers.Length; end > start; end--) {
+            for (int end = start + 1; end <= numbers.Length; end++) {
                 subarrays.Add(numbers[start..end]);
             }
         }
