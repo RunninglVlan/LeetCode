@@ -1,15 +1,19 @@
-﻿public class Solution {
+﻿using System.Diagnostics;
+
+public class Solution {
     public int MaxLength(int[] numbers) {
-        var max = 0;
+        List<int[]> subarrays = [];
         for (var start = 0; start < numbers.Length; start++) {
             for (int end = numbers.Length; end > start; end--) {
-                int[] subarray = numbers[start..end];
-                if (IsProductEquivalent(subarray)) {
-                    max = int.Max(subarray.Length, max);
-                }
+                subarrays.Add(numbers[start..end]);
             }
         }
-        return max;
+        foreach (int[] array in subarrays.OrderByDescending(it => it.Length)) {
+            if (IsProductEquivalent(array)) {
+                return array.Length;
+            }
+        }
+        throw new UnreachableException();
     }
 
     static bool IsProductEquivalent(int[] numbers) {
