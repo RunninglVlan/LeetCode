@@ -2,8 +2,16 @@
 
 public class Solution {
     public bool IsPalindrome(string candidate) {
-        for (var i = 0; i < candidate.Length / 2; i++) {
-            if (candidate[i] != candidate[candidate.Length - 1 - i]) {
+        for (int l = 0, r = candidate.Length - 1; l < r; l++, r--) {
+            char left = candidate[l];
+            while (!char.IsLetterOrDigit(left) && l < r) {
+                left = candidate[++l];
+            }
+            char right = candidate[r];
+            while (!char.IsLetterOrDigit(right) && l < r) {
+                right = candidate[--r];
+            }
+            if (char.ToUpper(left) != char.ToUpper(right)) {
                 return false;
             }
         }
