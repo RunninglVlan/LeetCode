@@ -1,11 +1,13 @@
 ﻿public class Solution {
     public IList<IList<string>> GroupAnagrams(string[] strings) {
-        Dictionary<char[], IList<string>> groups = new(ArrayComparer<char>.Instance);
+        Dictionary<int[], IList<string>> groups = new(ArrayComparer<int>.Instance);
         foreach (string letters in strings) {
-            char[] key = letters.ToCharArray();
-            Array.Sort(key);
-            if (!groups.TryGetValue(key, out var group)) {
-                groups[key] = group = [];
+            var frequencies = new int[26];
+            foreach (char letter in letters) {
+                frequencies[letter - 'a']++;
+            }
+            if (!groups.TryGetValue(frequencies, out var group)) {
+                groups[frequencies] = group = [];
             }
             group.Add(letters);
         }
