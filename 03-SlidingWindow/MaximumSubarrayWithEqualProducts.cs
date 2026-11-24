@@ -1,31 +1,23 @@
-﻿using System.Diagnostics;
-
-public class Solution {
+﻿public class Solution {
     public int MaxLength(int[] numbers) {
-        List<int[]> subarrays = [];
+        var max = 0;
         for (var start = 0; start < numbers.Length; start++) {
-            for (int end = start + 1; end <= numbers.Length; end++) {
-                subarrays.Add(numbers[start..end]);
+            int number = numbers[start];
+            int product = number, gcd = number, lcm = number;
+            for (int end = start + 1; end < numbers.Length; end++) {
+                number = numbers[end];
+                product *= number;
+                gcd = Mathf.GreatestCommonDivisor(gcd, number);
+                lcm = Mathf.LeastCommonMultiple(lcm, number);
+                bool isProductEquivalent = product == lcm * gcd;
+                if (!isProductEquivalent) {
+                    continue;
+                }
+                int length = end - start + 1;
+                max = int.Max(length, max);
             }
         }
-        foreach (int[] array in subarrays.OrderByDescending(it => it.Length)) {
-            if (IsProductEquivalent(array)) {
-                return array.Length;
-            }
-        }
-        throw new UnreachableException();
-    }
-
-    static bool IsProductEquivalent(int[] numbers) {
-        int product = numbers[0];
-        int gcd = product, lcm = product;
-        for (var i = 1; i < numbers.Length; i++) {
-            int number = numbers[i];
-            product *= number;
-            gcd = Mathf.GreatestCommonDivisor(gcd, number);
-            lcm = Mathf.LeastCommonMultiple(lcm, number);
-        }
-        return product == lcm * gcd;
+        return max;
     }
 }
 
