@@ -1,4 +1,7 @@
-﻿public class Solution {
+﻿// https://leetcode.com/problems/maximum-subarray-with-equal-products
+// Note: Doesn't use sliding window yet
+
+public class Solution {
     public int MaxLength(int[] numbers) {
         var max = 0;
         for (var start = 0; start < numbers.Length; start++) {
